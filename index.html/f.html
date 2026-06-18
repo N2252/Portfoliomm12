@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Form - Dark Theme</title>
+<style>
+  /* Basic Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Black Background for the section */
+  body {
+    background-color: #0f0f0f; /* Deep Black Background */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Form Container Styling */
+  .contact-container {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .contact-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #00ff66; /* Ne#00ff66on Blue Title */
+    letter-spacing: 1px;
+  }
+
+  /* Input Fields Styling */
+  .input-group {
+    margin-bottom: 25px;
+    position: relative;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #aaaaaa;
+  }
+
+  .input-group input, 
+  .input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #2a2a2a;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease; /* Smooth transition ke liye */
+  }
+
+  /* Typing Highlight Effect (Jab user type karega) */
+  .input-group input:focus, 
+  .input-group select:focus {
+    border-color: #00ff66; /* Neon Blue Highlight */
+    background-color: #222222;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); /* Glow Effect */
+  }
+
+  /* Submit Button Styling */
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(45deg, #00ff66, #0076ff);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);
+  }
+</style>
+</head>
+<body>
+
+  <div class="contact-container">
+    <h2>Let's Connect & Create</h2>
+    
+    <form  id="portfolioForm" action="https://boss12142.app.n8n.cloud/webhook/adcc7fea-8df4-4607-86a7-f2de72dc2942" method="POST">
+      
+      <div class="input-group">
+        <label for="name"> Name</label>
+        <input type="text" id="name" name="UserName" placeholder="Enter your name" required>
+      </div>
+
+      <div class="input-group">
+        <label for="email"> Email</label>
+        <input type="email" id="email" name="UserEmail" placeholder="Enter your email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="service"> 
+        <label for="service">please select your service?</label>
+        <select id="service" name="SelectedService" required>
+          <option value="" disabled selected>Select an option...</option>
+          <option value="Web Development">Web Development</option>
+          <option value="App Development">App Development</option>
+          <option value="AI / Automation">AI / Automation</option>
+        </select>
+      </div>
+  
+      <button
+	  type="submit" class="submit-btn">Submit</button>
+	  
+     </div>
+<script>
+  const form = document.getElementById('portfolioForm');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Yeh page ko us white screen par jane se rokega!
+    
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.innerHTML = "Send.";
+    
+    fetch(form.action, {
+      method: 'POST',
+      mode: 'no-cors', // Yeh line kisi bhi network error ko aane se rokegi
+      body: new FormData(form)
+    }).then(() => {
+      alert("Thank You! Aapka message chala gaya hai."); // Screen par pop-up aayega
+     window.location.href="index.html";
+    });
+  });
+</script>
+</body>
+</html>

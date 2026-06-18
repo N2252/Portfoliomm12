@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitin Portfolio Form</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+
+  body {
+    background-color: #000000; /* Ekdum Dark Black Background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .form-box {
+    background-color: #1c1c1c; /* Form ka color thoda light rakha hai taaki alag dikhe */
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    width: 400px;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+  }
+
+  h2 {
+    color: #00d2ff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  label {
+    color: #cccccc;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: white;
+    outline: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #00d2ff;
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
+  }
+
+  .error-msg {
+    color: #ff4444;
+    font-size: 12px;
+    display: none;
+    margin-top: 5px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00d2ff;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #00a8cc;
+  }
+</style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Contact Me</h2>
+    
+    <form id="myForm" action="AAPKA_N8N_URL_YAHAN_AAYEGA" method="POST">
+      
+      <label>Name</label>
+      <input type="text" name="UserName" required>
+
+      <label>Email</label>
+      <input type="text" id="email" name="UserEmail" required>
+      <div id="error" class="error-msg">Valid email id daalein! (@ aur .com zaruri hai)</div>
+
+      <label>Service</label>
+      <select name="ServiceType" required>
+        <option value="Web Design">Web Design</option>
+        <option value="Automation">Automation / AI</option>
+      </select>
+
+      <label>Budget</label>
+      <select name="Budget" required>
+        <option value="Low">Under ₹5000</option>
+        <option value="Medium">₹5000 - ₹15000</option>
+        <option value="High">₹15000+</option>
+      </select>
+
+      <label>Message</label>
+      <textarea name="Message" rows="3" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      let email = document.getElementById('email').value;
+      let error = document.getElementById('error');
+      
+      if(!email.includes('@') || !email.includes('.')) {
+        e.preventDefault(); // Form rok dega
+        error.style.
